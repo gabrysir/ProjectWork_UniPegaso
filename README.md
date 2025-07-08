@@ -1,21 +1,12 @@
 # ProjectWork_UniPegaso
-Progetto Società Trasporti Metropolitani (STM)
-Descrizione del Progetto
-Questo progetto si concentra sulla progettazione e implementazione di uno schema di persistenza dei dati a supporto dei servizi di una moderna azienda nel settore dei trasporti, la Società Trasporti Metropolitani (STM). L'obiettivo principale è trasformare i dati grezzi in informazioni aziendali di valore, abilitando la STM a operare con maggiore efficacia, a servire meglio la comunità e a prendere decisioni strategiche più informate.
-
-Il sistema è stato concepito per gestire e organizzare in modo efficiente le informazioni relative a:
-
-Autisti e veicoli: Dettagli sui mezzi di trasporto e sul personale di guida.
-
-Pianificazioni e turni: Gestione degli orari e delle assegnazioni.
-
-Manutenzione: Tracciamento delle attività di manutenzione dei veicoli.
-
-Passeggeri e prenotazioni: Dati relativi agli utenti e ai loro viaggi.
-
-Tratte e fermate: Informazioni sulle rotte e i punti di sosta.
-
-Attraverso una solida architettura del database, il progetto mira a fornire una base dati affidabile per l'analisi delle prestazioni, l'ottimizzazione delle risorse e il miglioramento continuo dei servizi offerti dalla STM.
+Il Comune di Metropoli ha incaricato la Società Trasporti Metropolitani (STM) di ottimizzare la gestione dei servizi di trasporto su autobus per una popolazione di oltre 500.000 abitanti. Attualmente, le informazioni sui passeggeri, corse, biglietti e veicoli sono distribuite in più sistemi isolati, causando inefficienze: difficoltà nel monitorare in tempo reale lo stato delle corse, nel gestire tempestivamente la manutenzione dei mezzi, nel pianificare turni degli autisti e nell’analizzare i dati di vendita per decisioni strategiche.
+Si richiede la progettazione di uno schema di persistenza dati unico e centralizzato, in grado di supportare:
+tracciamento accurato delle corse e dei relativi tempi di partenza e arrivo;
+prenotazione e acquisto dei titoli di viaggio 
+catalogazione e validazione dei titoli di viaggio emessi;
+storicizzazione degli interventi di manutenzione e dello stato operativo dei veicoli;
+gestione dei turni di servizio degli autisti con assegnazione automatica alle corse;
+estrazione di report e KPI per analisi e la produttività
 
 Sito Implementato
 Puoi visualizzare l'applicazione web implementata e interagire con essa al seguente link:
