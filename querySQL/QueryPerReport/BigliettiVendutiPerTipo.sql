@@ -1,5 +1,5 @@
 # Query SQL per contare i biglietti per tipo
-    $sql = "
+  
         SELECT
             TipoBiglietto,
             COUNT(ID_Biglietto) AS NumeroBigliettiVenduti
