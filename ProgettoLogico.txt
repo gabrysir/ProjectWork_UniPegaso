@@ -1,6 +1,7 @@
 Schema Dettagliato delle Tabelle
 Di seguito è presentato lo schema di ogni tabella con le sue colonne, i tipi di dato suggeriti, e l'indicazione delle chiavi primarie (PK), chiavi uniche (UK) e chiavi esterne (FK).
 Tabelle e Colonne:
+
 1. PASSEGGERI
 ID_Passeggero (INT, PK, AUTO_INCREMENT)
 Nome (VARCHAR(50), NOT NULL)
@@ -9,6 +10,7 @@ DataNascita (DATE, NULL)
 Email (VARCHAR(100), UNIQUE, NULL)
 Telefono (VARCHAR(20), NULL)
 Indirizzo (VARCHAR(255), NULL)
+
 2. ORDINI_ACQUISTO
 ID_Ordine (INT, PK, AUTO_INCREMENT)
 ID_Passeggero (INT, FK a PASSEGGERI, NULL) - Permette acquisti anche da passeggeri non registrati.
@@ -17,6 +19,7 @@ ImportoTotale (DECIMAL(10,2), NOT NULL)
 MetodoPagamento (VARCHAR(50), NOT NULL)
 StatoOrdine (VARCHAR(20), NOT NULL)
 EmailAcquirente (VARCHAR(100), NOT NULL) - Per inviare ricevute anche ad acquirenti anonimi.
+
 3. PRENOTAZIONI
 ID_Prenotazione (INT, PK, AUTO_INCREMENT)
 ID_Passeggero (INT, FK a PASSEGGERI, NOT NULL)
@@ -25,6 +28,7 @@ DataOraPrenotazione (DATETIME, NOT NULL)
 NumeroPosti (SMALLINT, NOT NULL)
 StatoPrenotazione (VARCHAR(20), NOT NULL)
 DataScadenzaPrenotazione (DATETIME, NULL)
+
 4. BIGLIETTI
 ID_Biglietto (INT, PK, AUTO_INCREMENT)
 ID_Ordine (INT, FK a ORDINI_ACQUISTO, NOT NULL)
@@ -37,28 +41,33 @@ DataValiditaInizio (DATETIME, NOT NULL)
 DataValiditaFine (DATETIME, NOT NULL)
 StatoBiglietto (VARCHAR(20), NOT NULL)
 ModalitaPagamento (VARCHAR(50), NULL) - Potrebbe essere ereditato dall'ordine, ma qui è più flessibile.
+
 5. VALIDAZIONI
 ID_Validazione (INT, PK, AUTO_INCREMENT)
 ID_Biglietto (INT, FK a BIGLIETTI, NOT NULL)
 ID_Corsa (INT, FK a CORSE, NOT NULL)
 ID_Fermata (INT, FK a FERMATE, NULL) - Il punto specifico di validazione, se disponibile.
 DataOraValidazione (DATETIME, NOT NULL)
+
 6. FERMATE
 ID_Fermata (INT, PK, AUTO_INCREMENT)
 NomeFermata (VARCHAR(100), UNIQUE, NOT NULL)
 Indirizzo (VARCHAR(255), NULL)
 Latitudine (DECIMAL(9,6), NULL)
 Longitudine (DECIMAL(9,6), NULL)
+
 7. TRATTE
 ID_Tratta (INT, PK, AUTO_INCREMENT)
 ID_FermataInizio (INT, FK a FERMATE, NOT NULL)
 ID_FermataFine (INT, FK a FERMATE, NOT NULL)
 DurataMedia (INT, NULL) - Durata in minuti.
 Distanza (DECIMAL(10,2), NULL) - Distanza in Km.
+
 8. ITINERARI
 ID_Itinerario (INT, PK, AUTO_INCREMENT)
 NomeItinerario (VARCHAR(100), UNIQUE, NOT NULL)
 Descrizione (TEXT, NULL)
+
 9. CORSE
 ID_Corsa (INT, PK, AUTO_INCREMENT)
 ID_Itinerario (INT, FK a ITINERARI, NOT NULL)
@@ -71,6 +80,7 @@ OrarioArrivoPrevisto (DATETIME, NOT NULL)
 OrarioPartenzaEffettivo (DATETIME, NULL)
 OrarioArrivoEffettivo (DATETIME, NULL)
 StatoCorsa (VARCHAR(20), NOT NULL)
+
 10. AUTISTI
 ID_Autista (INT, PK, AUTO_INCREMENT)
 Nome (VARCHAR(50), NOT NULL)
@@ -82,6 +92,7 @@ StatoAssunzione (VARCHAR(20), NOT NULL)
 CodiceFiscale (VARCHAR(16), UNIQUE, NULL)
 DataAssunzione (DATE, NULL)
 ContattoEmergenza (VARCHAR(20), NULL)
+
 11. TURNI_DI_SERVIZIO
 ID_Turno (INT, PK, AUTO_INCREMENT)
 ID_Autista (INT, FK a AUTISTI, NOT NULL)
@@ -90,6 +101,7 @@ OraInizio (TIME, NOT NULL)
 OraFine (TIME, NOT NULL)
 DescrizioneTurno (VARCHAR(100), NULL)
 StatoTurno (VARCHAR(20), NOT NULL)
+
 12. VEICOLI
 ID_Veicolo (VARCHAR(20), PK) - La targa come chiave primaria.
 Modello (VARCHAR(50), NOT NULL)
@@ -98,6 +110,7 @@ AnnoProduzione (SMALLINT, NULL)
 Capienza (SMALLINT, NULL)
 StatoOperativo (VARCHAR(20), NOT NULL)
 Chilometraggio (INT, NULL)
+
 13. MANUTENZIONI
 ID_Manutenzione (INT, PK, AUTO_INCREMENT)
 ID_Veicolo (VARCHAR(20), FK a VEICOLI, NOT NULL)
@@ -109,10 +122,12 @@ DescrizioneIntervento (TEXT, NULL)
 StatoManutenzione (VARCHAR(20), NOT NULL)
 CostoRicambi (DECIMAL(10,2), NULL)
 CostoManodopera (DECIMAL(10,2), NULL)
+
 14. QUALIFICHE_AUTISTA
 ID_Qualifica (INT, PK, AUTO_INCREMENT)
 NomeQualifica (VARCHAR(50), UNIQUE, NOT NULL)
 DescrizioneQualifica (TEXT, NULL)
+
 15. DISPONIBILITA_AUTISTI
 ID_Disponibilita (INT, PK, AUTO_INCREMENT)
 ID_Autista (INT, FK a AUTISTI, NOT NULL)
@@ -120,16 +135,19 @@ DataInizioIndisponibilita (DATETIME, NOT NULL)
 DataFineIndisponibilita (DATETIME, NOT NULL)
 TipoIndisponibilita (VARCHAR(50), NOT NULL)
 Note (TEXT, NULL)
+
 16. COMPONENTI_VEICOLO
 ID_Componente (INT, PK, AUTO_INCREMENT)
 ID_Veicolo (VARCHAR(20), FK a VEICOLI, NOT NULL)
 NomeComponente (VARCHAR(100), NOT NULL)
 DescrizioneComponente (TEXT, NULL)
+
 17. TECNICI_MANUTENZIONE
 ID_Tecnico (INT, PK, AUTO_INCREMENT)
 Nome (VARCHAR(50), NOT NULL)
 Cognome (VARCHAR(50), NOT NULL)
 Specializzazione (VARCHAR(100), NULL)
+
 18. PIANIFICAZIONI_MANUTENZIONE
 ID_Pianificazione (INT, PK, AUTO_INCREMENT)
 ID_Veicolo (VARCHAR(20), FK a VEICOLI, NOT NULL)
@@ -139,6 +157,7 @@ TipoManutenzionePianificata (VARCHAR(50), NOT NULL)
 StatoPianificazione (VARCHAR(20), NOT NULL)
 Note (TEXT, NULL)
 Tabelle Associative (per risolvere relazioni N:M):
+
 19. ITINERARI_TRATTE
 ID_ItinerarioTratta (INT, PK, AUTO_INCREMENT) - PK surrogata per semplicità.
 ID_Itinerario (INT, FK a ITINERARI, NOT NULL)
@@ -147,19 +166,23 @@ Ordine (INT, NOT NULL) - Ordine della tratta nell'itinerario.
 Vincoli:
 UNIQUE(ID_Itinerario, Ordine) - Un itinerario non può avere due tratte nello stesso ordine.
 UNIQUE(ID_Itinerario, ID_Tratta) - Evita la ripetizione della stessa tratta nello stesso itinerario.
+
 20. MANUTENZIONI_TECNICI
 ID_Manutenzione (INT, FK a MANUTENZIONI, PK)
 ID_Tecnico (INT, FK a TECNICI_MANUTENZIONE, PK)
 Chiave Primaria Composita: (ID_Manutenzione, ID_Tecnico)
+
 21. MANUTENZIONI_COMPONENTI
 ID_Manutenzione (INT, FK a MANUTENZIONI, PK)
 ID_Componente (INT, FK a COMPONENTI_VEICOLO, PK)
 Chiave Primaria Composita: (ID_Manutenzione, ID_Componente)
+
 22. AUTISTI_QUALIFICHE
 ID_Autista (INT, FK a AUTISTI, PK)
 ID_Qualifica (INT, FK a QUALIFICHE_AUTISTA, PK)
 Chiave Primaria Composita: (ID_Autista, ID_Qualifica)
 Cardinalità e Integrità Referenziale:
+
 Le relazioni tra le tabelle sono definite tramite le chiavi esterne (FK). Le cardinalità (es. uno a molti, molti a molti) sono sviluppate come segue:
 Uno a Molti (1:N): La FK si trova sul lato "molti" della relazione, puntando alla PK del lato "uno". Ad esempio, ID_Passeggero in ORDINI_ACQUISTO si riferisce a ID_Passeggero in PASSEGGERI.
 Molti a Molti (N:M): Vengono risolte con tabelle associative (come ITINERARI_TRATTE, MANUTENZIONI_TECNICI, ecc.) che contengono le FK delle due entità coinvolte e formano una chiave primaria composita.
